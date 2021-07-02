@@ -3,6 +3,7 @@
 
 
 HTTP GET /queue/:queue - Receive the last message from the queue
+
 HTTP GET /metrics - prometheus metrics
 
 ### Send message to the queue
