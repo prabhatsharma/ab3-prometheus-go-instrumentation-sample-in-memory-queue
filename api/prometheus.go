@@ -23,7 +23,7 @@ func setupTotalMessages() {
 	opts := prometheus.GaugeOpts{
 		Namespace: "octank",
 		Subsystem: "messages",
-		Name:      "in_queue",
+		Name:      "in_queue_count",
 		Help:      "How many messages are in the queue.",
 	}
 
@@ -44,7 +44,7 @@ func setupRequestsReceived() {
 func setupMessageID() {
 	PromMessageID = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "octank_message_ids",
+			Name: "octank_message_ids_total",
 			Help: "Highest message ID.",
 		},
 		[]string{"queue"},
