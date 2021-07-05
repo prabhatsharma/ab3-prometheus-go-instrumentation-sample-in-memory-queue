@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: prometheus-sample
-        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:$CODEBUILD_BUILD_NUMBER
+        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:v$CODEBUILD_BUILD_NUMBER
 
 ---
 
