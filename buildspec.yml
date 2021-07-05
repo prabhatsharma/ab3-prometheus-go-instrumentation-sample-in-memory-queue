@@ -25,5 +25,6 @@ phases:
       - chmod +x kubectl
       - ./kubectl version
       - sed "s/CODEBUILD_BUILD_NUMBER/$CODEBUILD_BUILD_NUMBER/g" kube-deployment.yaml > kube.yaml
+      - cat kube.yaml
       - ./kubectl apply -f kube.yaml
 
