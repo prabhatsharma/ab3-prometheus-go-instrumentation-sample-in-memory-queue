@@ -1,7 +1,8 @@
 ############################
 # STEP 1 build executable binary
 ############################
-FROM golang:alpine AS builder
+# FROM golang:alpine AS builder
+FROM 525158249545.dkr.ecr.us-west-2.amazonaws.com/golang:1.16.5-alpine3.13 as builder
 # Install git.
 # Git is required for fetching the dependencies.
 # RUN apk update && apk add --no-cache git
