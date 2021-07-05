@@ -16,20 +16,20 @@ func Get(c *gin.Context) {
 			"total_messages": 0,
 			"total_size":     0,
 		})
-		return
+	} else {
+		qm.RequestsReceived += 1
+		qm.TotalMessages -= 1
+		QueueMetrics[queueName] = qm
+
+		FrontMessageInQueue := Messages[queueName][0:1][0]
+
+		Messages[queueName] = Messages[queueName][1:len(Messages[queueName])]
+		qm.TotalMessages -= 1
+
+		PromTotalMessagesInQueue.WithLabelValues(queueName).Dec()
+		PromRequestsReceived.WithLabelValues(queueName).Inc()
+
+		c.JSON(200, FrontMessageInQueue)
 	}
 
-	qm.RequestsReceived += 1
-	qm.TotalMessages -= 1
-	QueueMetrics[queueName] = qm
-
-	FrontMessageInQueue := Messages[queueName][0:1][0]
-
-	Messages[queueName] = Messages[queueName][1:len(Messages[queueName])]
-	qm.TotalMessages -= 1
-
-	PromTotalMessagesInQueue.WithLabelValues(queueName).Dec()
-	PromRequestsReceived.WithLabelValues(queueName).Inc()
-
-	c.JSON(200, FrontMessageInQueue)
 }

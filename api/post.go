@@ -17,9 +17,12 @@ func Post(c *gin.Context) {
 
 	var data Message
 
-	data.ID = qm.MessageID
+	var requestBody interface{}
 
-	c.Bind(&data)
+	c.Bind(&requestBody)
+
+	data.ID = qm.MessageID
+	data.Body = requestBody
 
 	Messages[queueName] = append(Messages[queueName], data)
 
