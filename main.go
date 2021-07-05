@@ -21,7 +21,7 @@ func main() {
 	r.POST("/queue/:queue", queueapi.Post)
 	r.GET("/queue/:queue", queueapi.Get)
 	r.GET("/queue/:queue/stats", queueapi.Stats)
-	// r.GET("/metrics", prometheusHandler())
+	// r.GET("/metrics", prometheusHandler()) // this is being delegated to ginprometheus
 	r.GET("/queue", queueapi.GetAll)
 
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
