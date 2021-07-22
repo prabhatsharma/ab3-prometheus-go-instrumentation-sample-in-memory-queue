@@ -8,32 +8,32 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus-sample
+  name: in-memory-queue
   namespace: prometheus-sample
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prometheus-sample
+      app: in-memory-queue
   template:
     metadata:
       labels:
-        app: prometheus-sample
+        app: in-memory-queue
     spec:
       containers:
-      - name: prometheus-sample
-        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:vCODEBUILD_BUILD_NUMBER
+      - name: in-memory-queue
+        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:latest
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: prometheus-sample
+  name: in-memory-queue
   namespace: prometheus-sample
 spec:
   selector:
-    app: prometheus-sample
+    app: in-memory-queue
   ports:
   - name: http
     port: 8080
