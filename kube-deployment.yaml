@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: in-memory-queue
-        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:latest
+        image: 525158249545.dkr.ecr.us-west-2.amazonaws.com/prometheus-sample:vCODEBUILD_BUILD_NUMBER
 
 ---
 
